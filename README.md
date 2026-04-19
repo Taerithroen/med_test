@@ -24,11 +24,13 @@ docker compose up --build
 
 ## Тесты backend
 
-Из каталога `backend`:
+Из **корня репозитория** или из `backend/`:
 
 ```bash
 npm test
 ```
+
+В корне вызывается тот же скрипт, что и в `backend` (через `package.json` в корне).
 
 (разбор CSV/ODS-цепочки, санитизация имён загрузки и др.)
 

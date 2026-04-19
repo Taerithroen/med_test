@@ -1,0 +1,9 @@
+{
+  "name": "reports-platform",
+  "private": true,
+  "description": "Корневой манифест: тесты и сборка в каталоге backend/",
+  "scripts": {
+    "test": "npm test --prefix backend",
+    "build:backend": "npm run build --prefix backend"
+  }
+}
