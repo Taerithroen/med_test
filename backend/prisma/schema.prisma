@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum RunStatus {
+  В очереди
+  В процессе
+  Успешно
+  Ошибка
+}
+
+model ReportRun {
+  id           String    @id @default(cuid())
+  reportId     String
+  status       RunStatus @default(В очереди)
+  params       Json?
+  createdAt    DateTime  @default(now())
+  startedAt    DateTime?
+  finishedAt   DateTime?
+  progressPct  Int       @default(0)
+  message      String?
+  outputFormat String?
+  outputPath   String?
+  outputName   String?
+  error        String?
+
+  @@index([reportId, createdAt])
+  @@index([status, createdAt])
+}
+
+model Sale {
+  id        String   @id @default(cuid())
+  date      DateTime
+  region    String
+  amount    Int
+  createdAt DateTime @default(now())
+
+  @@index([date])
+  @@index([region])
+}
+
+/** Метаданные загрузки в POST /api/uploads (сам файл только на диске в uploads/{id}/). */
+model FileUpload {
+  id               String   @id
+  fileName         String
+  originalFileName String?
+  sizeBytes        Int
+  contentType      String?
+  createdAt        DateTime @default(now())
+
+  @@index([createdAt])
+}
+

@@ -1,0 +1,42 @@
+{
+  "name": "reports-backend",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev:api": "tsx watch src/api/main.ts",
+    "dev:worker": "tsx watch src/worker/main.ts",
+    "build": "tsc -p tsconfig.json",
+    "start:api": "node dist/api/main.js",
+    "start:worker": "node dist/worker/main.js",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate deploy",
+    "prisma:seed": "node dist/seed.js",
+    "test": "node --import tsx --test --test-reporter spec src/lib/csv.test.ts src/lib/sanitizeUploadName.test.ts src/lib/odsRows.test.ts"
+  },
+  "dependencies": {
+    "@fastify/cors": "^10.1.0",
+    "@fastify/multipart": "^9.4.0",
+    "@fastify/static": "^8.3.0",
+    "@prisma/client": "^6.16.0",
+    "bullmq": "^5.58.3",
+    "dayjs": "^1.11.13",
+    "exceljs": "^4.4.0",
+    "fast-xml-parser": "^5.7.1",
+    "fastify": "^5.5.0",
+    "jszip": "^3.10.1",
+    "node-fetch": "^3.3.2",
+    "pdfkit": "^0.17.2",
+    "zod": "^4.1.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.18.4",
+    "@types/pdfkit": "^0.17.6",
+    "prisma": "^6.16.0",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  }
+}
