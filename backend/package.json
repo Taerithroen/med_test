@@ -15,7 +15,7 @@
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate deploy",
     "prisma:seed": "node dist/seed.js",
-    "test": "node --import tsx --test --test-reporter spec src/lib/csv.test.ts src/lib/sanitizeUploadName.test.ts src/lib/odsRows.test.ts"
+    "test": "node --import tsx --test --test-reporter spec src/lib/csv.test.ts src/lib/sanitizeUploadName.test.ts src/lib/odsRows.test.ts src/reports/registry.test.ts"
   },
   "dependencies": {
     "@fastify/cors": "^10.1.0",

@@ -8,16 +8,16 @@ datasource db {
 }
 
 enum RunStatus {
-  В очереди
-  В процессе
-  Успешно
-  Ошибка
+  QUEUED
+  RUNNING
+  SUCCEEDED
+  FAILED
 }
 
 model ReportRun {
   id           String    @id @default(cuid())
   reportId     String
-  status       RunStatus @default(В очереди)
+  status       RunStatus @default(QUEUED)
   params       Json?
   createdAt    DateTime  @default(now())
   startedAt    DateTime?
